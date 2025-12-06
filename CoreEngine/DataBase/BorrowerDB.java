@@ -9,7 +9,7 @@ import CoreEngine.Instance.*;
  * BorrowerDB 클래스는, Borrower 클래스로 생성한 객체들을 저장하기 위한 클래스 이다.
  *
  * @author (니시 야스히로)
- * @version (2025.11.20)
+ * @version (2025.12.06)
  */
 public class BorrowerDB{
     private TreeSet<Borrower> borrowerDB = null;

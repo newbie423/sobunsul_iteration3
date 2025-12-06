@@ -8,8 +8,8 @@ import CoreEngine.Instance.*;
 /**
  * BookDB 클래스는 Book 클래스로 생성한 객체들을 저장하기 위한 클래스 이다.
  *
- * @author (작성자 이름)
- * @version (2025.11.20)
+ * @author (니샤 야스히로)
+ * @version (2025.12.06)
  */
 public class BookDB{
     private TreeSet<Book> bookDB = null;

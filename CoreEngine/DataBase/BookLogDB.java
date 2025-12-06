@@ -6,10 +6,10 @@ import java.util.*;
 import CoreEngine.Instance.*;
 
 /**
- * BookLogDB 클래스의 설명을 작성하세요.
+ * BookLogDB는 책과 관련하여 수행된 모든 작업을 저장하기 위한 클래스이다
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (니시 야스히로)
+ * @version (20025.12.06)
  */
 public class BookLogDB {
     ArrayList<String> bookLogDB = null;
@@ -28,13 +28,26 @@ public class BookLogDB {
         bookLogDB.add("반납/" + book + "/" + borrower);
     }
     
-    public String toString(){
-        String bookLogs = "";
-        
-        for(String bookLog : this.bookLogDB){
-            bookLogs += bookLog + "\n";
+    public boolean emptyCheck(){
+        return this.bookLogDB.isEmpty();
+    }
+    
+    private Iterator<String> it = null;
+    // 책 작업 기록 DB의 iterator를 생성한뒤 매번 호출될 때마다 다음요소를 전달하며,
+    // 모든 책 작업 기록에 대한 순회가 끝난 경우 iterator를 다시 초기화 하는 메소드이다
+    public String getOneBookLog(){
+        if(this.it == null){ // iterator가 초기화 되어 있으면 새롭게 생성
+            this.it = this.bookLogDB.iterator();
         }
         
-        return bookLogs;
+        String bookLog = null;
+        
+        if(it.hasNext()){ // 다음 책이 있을때만, 다음책을 받아오기
+            bookLog = this.it.next();
+        }else{ // 
+            this.it = null; // 다음 책이 없으면 현재 iterator에 대한 모든 책을 다 순회한 것이므로 다음번 사용을 위해 초기화
+        }
+        
+        return bookLog;
     }
 }

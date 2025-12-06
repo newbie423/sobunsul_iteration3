@@ -7,7 +7,7 @@ import java.util.*;
  * LoanDB 클래스는 Loan 클래스로 생성한 객체들을 저장하기 위한 클래스 이다
  *
  * @author (정윤성)
- * @version (2025.11.20)
+ * @version (2025.12.06)
  */
 public class LoanDB
 {

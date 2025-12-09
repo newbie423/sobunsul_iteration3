@@ -152,6 +152,7 @@ public class LibraryApplication
         loan.setReturnedDate(LocalDate.now());
 
         returnBorrower.connectLoaned(loan);
+        returnBook.connectLoaned(loan);
 
         this.bookLogDB.addBookReturnLog(returnBook, returnBorrower);
 
@@ -234,7 +235,7 @@ public class LibraryApplication
     }
 
     /*
-     * 이 메소드는 데이터 베이스속 모든 책을 표시하는 메소드이다
+     * 이 메소드는 책DB속 모든 책을 표시하는 메소드이다
      * 
      * @param 없음
      * 
@@ -318,5 +319,65 @@ public class LibraryApplication
         }
 
         return message;
+    }
+    
+    /*
+     * 이 메소드는 이용자DB속 모든 이용자를 표시하는 메소드이다
+     * 
+     * @param 없음
+     * 
+     * @return 없음
+     */
+    public String displayAllBorrower() {
+        if(this.borrowerDB.emptyCheck()){
+            return "이용자 DB에 등록된 책이 없습니다";
+        }
+
+        String message = "";
+
+        while(true){
+            Borrower borrower = this.borrowerDB.getOneBorrower();
+
+            if(borrower == null){
+                break;
+            }
+
+            message += borrower + "\n";
+        }
+
+        return message;
+    }
+    
+    /*
+     * 이 메소드는 이용자의 책 대출 기록을 표시하는 메소드이다
+     * 
+     * @param 없음
+     * 
+     * @return 없음
+     */
+    public String displayBookLoanLog(int bookID){
+        Book book = this.bookDB.findBook(bookID);
+
+        if(book == null){
+            return "대출 기록 표시 실패 : " + "\"" + bookID + "\"" + "에 해당되는 책이 존재하지 않아 대출 기록을 출력할 수 없습니다\n";
+        }
+
+        ArrayList<Loan> loaned = book.getLoaned();
+
+        if(loaned.size() <= 0){
+            return "대출 기록 없음";
+        }
+
+        String loanedString = "";
+
+        for(Loan loan : book.getLoaned()){
+            loanedString += loan + "\n";
+        }
+
+        if(loanedString.equals("")){
+            return "";
+        }
+
+        return "\"" + book + "\"를 대출했었던 이용자들\n" + loanedString;
     }
 }

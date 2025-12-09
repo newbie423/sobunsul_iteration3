@@ -1,4 +1,5 @@
 package CoreEngine.Instance;
+import java.util.*;
 
 
 /**
@@ -13,11 +14,14 @@ public class Book{
     private String author = null;
 
     private Loan loan = null;
+    private ArrayList<Loan> loaned = null;
 
     public Book(int bookID, String title, String author){
         this.bookID = bookID;
         this.title = title;
         this.author = author;
+        
+        this.loaned = new ArrayList<>();
     }
 
     // 대출 건수와 관계를 형성하는 메소드이다
@@ -44,5 +48,13 @@ public class Book{
         return this.bookID + " " + this.title + " " + this.author;
     }
 
+    public void connectLoaned(Loan loan){
+        this.loaned.add(loan);
+    }
+    
     public int getBookID(){ return this.bookID; }
+    
+    public ArrayList<Loan> getLoaned(){
+        return this.loaned;
+    }
 }

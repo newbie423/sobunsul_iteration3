@@ -51,4 +51,28 @@ public class BorrowerDB{
 
         return null;
     }
+    
+    // 책이 없는지 확인하는 메소드이다
+    public boolean emptyCheck(){
+        return this.borrowerDB.isEmpty();
+    }
+    
+    private Iterator<Borrower> it = null;
+    // 책DB의 iterator를 생성한뒤 매번 호출될 때마다 다음요소를 전달하며,
+    // 모든 책에 대한 순회가 끝난 경우 iterator를 다시 초기화 하는 메소드이다
+    public Borrower getOneBorrower(){
+        if(this.it == null){ // iterator가 초기화 되어 있으면 새롭게 생성
+            this.it = this.borrowerDB.iterator();
+        }
+        
+        Borrower borrower = null;
+        
+        if(it.hasNext()){ // 다음 책이 있을때만, 다음책을 받아오기
+            borrower = this.it.next();
+        }else{ // 
+            this.it = null; // 다음 책이 없으면 현재 iterator에 대한 모든 책을 다 순회한 것이므로 다음번 사용을 위해 초기화
+        }
+        
+        return borrower;
+    }
 }

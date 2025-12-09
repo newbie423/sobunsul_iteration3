@@ -8,8 +8,7 @@ package CoreEngine;
  * @author (정윤성, 니시야스히로, 윈파파한, 오번가수영)
  * @version (2025.11.26)
  */
-public class Librarian_테스트용_추후_삭제
-{
+public class Librarian {
     public static void registerOneBorrowerTest(){
         LibraryApplication LA = new LibraryApplication();
         
@@ -199,6 +198,6 @@ public class Librarian_테스트용_추후_삭제
         LA.loanOneBook(1, 101); LA.returnOneBook(1);
         
         System.out.println("===== 빌렸었던 책이 있을때");
-        System.out.println(LA.displayBorrowerLoanLog(1));
+        System.out.println(LA.displayBookLoanLog(1));
     }
 }

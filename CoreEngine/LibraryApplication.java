@@ -264,7 +264,7 @@ public class LibraryApplication
     /*
      * 이 메소드는 이용자의 책 대출 기록을 표시하는 메소드이다
      * 
-     * @param 없음
+     * @param borrowerID - 책 대출 기록을 표시할 이용자의 아이디
      * 
      * @return 없음
      */
@@ -349,9 +349,9 @@ public class LibraryApplication
     }
     
     /*
-     * 이 메소드는 이용자의 책 대출 기록을 표시하는 메소드이다
+     * 이 메소드는 임이의 책을 대출한 이용자들의 기록을 표시하는 메소드이다
      * 
-     * @param 없음
+     * @param bookID - 책을 대출한 이용자의 기록을 표시할 책의 아이디
      * 
      * @return 없음
      */

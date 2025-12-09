@@ -305,7 +305,7 @@ public class LibraryApplication
         if(this.bookLogDB.emptyCheck()){
             return "책 관련 작업 기록 없음";
         }
-        
+
         String message = "";
 
         while(true){
@@ -320,34 +320,7 @@ public class LibraryApplication
 
         return message;
     }
-    
-    /*
-     * 이 메소드는 이용자DB속 모든 이용자를 표시하는 메소드이다
-     * 
-     * @param 없음
-     * 
-     * @return 없음
-     */
-    public String displayAllBorrower() {
-        if(this.borrowerDB.emptyCheck()){
-            return "이용자 DB에 등록된 책이 없습니다";
-        }
 
-        String message = "";
-
-        while(true){
-            Borrower borrower = this.borrowerDB.getOneBorrower();
-
-            if(borrower == null){
-                break;
-            }
-
-            message += borrower + "\n";
-        }
-
-        return message;
-    }
-    
     /*
      * 이 메소드는 임이의 책을 대출한 이용자들의 기록을 표시하는 메소드이다
      * 
@@ -379,5 +352,32 @@ public class LibraryApplication
         }
 
         return "\"" + book + "\"를 대출했었던 이용자들\n" + loanedString;
+    }
+
+    /*
+     * 이 메소드는 이용자DB속 모든 이용자를 표시하는 메소드이다
+     * 
+     * @param 없음
+     * 
+     * @return 없음
+     */
+    public String displayAllBorrower() {
+        if(this.borrowerDB.emptyCheck()){
+            return "이용자 DB에 등록된 책이 없습니다";
+        }
+
+        String message = "";
+
+        while(true){
+            Borrower borrower = this.borrowerDB.getOneBorrower();
+
+            if(borrower == null){
+                break;
+            }
+
+            message += borrower + "\n";
+        }
+
+        return message;
     }
 }
